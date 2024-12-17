@@ -32,22 +32,32 @@ function App() {
   const [pokemonIndex, setPokemonIndex] = useState(0);
 
   const handleClick = () => {
-    setPokemonIndex(pokemonIndex + 1);
-    if (pokemonIndex < pokemonList.length - 1) return pokemonIndex;
+    if (pokemonIndex < pokemonList.length - 1) {
+      setPokemonIndex(pokemonIndex + 1);
+    }
   };
 
   const handlePrevious = () => {
-    setPokemonIndex(pokemonIndex - 1);
-    if (pokemonIndex > 0) return pokemonIndex;
+    if (pokemonIndex > 0) {
+      setPokemonIndex(pokemonIndex - 1);
+    }
   };
 
   return (
     <div>
       <h1>Pokemon Index</h1>
-      <button type="button" onClick={handleClick}>
+      <button
+        type="button"
+        onClick={handleClick}
+        disabled={pokemonIndex === pokemonList.length - 1}
+      >
         Suivant
       </button>
-      <button type="button" onClick={handlePrevious}>
+      <button
+        type="button"
+        onClick={handlePrevious}
+        disabled={pokemonIndex === 0}
+      >
         Précédent
       </button>
 
