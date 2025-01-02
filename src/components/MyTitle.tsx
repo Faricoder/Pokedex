@@ -1,5 +1,5 @@
 function MyTitle() {
-  return <div></div>;
+  return <div> </div>;
 }
 
 export default MyTitle;
