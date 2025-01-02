@@ -1,35 +1,37 @@
-import PokemonCard from "./components/PokemonCard";
-import { useState } from "react";
-import "./App.css";
+import PokemonCard from "./PokemonCard";
+import React from "react";
 
-function App() {
-  const [pokemonIndex, setPokemonIndex] = useState(0);
+interface Pokemon {
+  name: string;
+  imgSrc?: string;
+}
+
+interface NavBarProps {
+  setPokemonIndex: (index: number) => void;
+  pokemonList: Pokemon[];
+  currentIndex: number;
+}
+
+function NavBar({ setPokemonIndex, pokemonList, currentIndex }: NavBarProps) {
+  const handlePrevious = () => {
+    const newIndex =
+      (currentIndex - 1 + pokemonList.length) % pokemonList.length;
+    setPokemonIndex(newIndex);
+  };
+
+  const handleNext = () => {
+    const newIndex = (currentIndex + 1) % pokemonList.length;
+    setPokemonIndex(newIndex);
+  };
 
   return (
     <div>
       <nav>
-        {pokemonList.map((pokemon, index) => (
-          <button
-            key={pokemon.name}
-            type="button"
-            onClick={() => setPokemonIndex(index)}
-          >
-            {pokemon.name}
-          </button>
-        ))}
+        <button onClick={handlePrevious}>Précédent</button>
+        <button onClick={handleNext}>Suivant</button>
       </nav>
-      
-      interface Pokemon {
-        name: string;
-        imgSrc?: string;
-        }
-
-        interface NavBarProps {
-        setPokemonIndex: (index: number) => void;
-        pokemonList: Pokemon[];
-        } 
-      <PokemonCard pokemon={pokemonList[pokemonIndex]} />
     </div>
   );
 }
+
 export default NavBar;
