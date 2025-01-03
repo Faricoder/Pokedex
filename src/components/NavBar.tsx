@@ -21,6 +21,10 @@ function NavBar({ setPokemonIndex, pokemonList, currentIndex }: NavBarProps) {
 
   const handleNext = () => {
     const newIndex = (currentIndex + 1) % pokemonList.length;
+
+    if (pokemonList[newIndex].name.toLowerCase() === "pikachu") {
+      alert("pika pikachu !!!");
+    }
     setPokemonIndex(newIndex);
   };
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 
 import PokemonCard from "./components/PokemonCard";
@@ -32,6 +33,10 @@ function App() {
     },
   ];
 
+  useEffect(() => {
+    alert(" Hello, Pokémon trainer! :)");
+  }, []);
+
   return (
     <div>
       <h1>Pokemon Index</h1>
@@ -40,7 +45,6 @@ function App() {
         pokemonList={pokemonList}
         currentIndex={pokemonIndex}
       />
-      {/* Composant PokemonCard */}
       <PokemonCard pokemon={pokemonList[pokemonIndex]} />
     </div>
   );
